@@ -1,0 +1,62 @@
+{
+    // "layer": "bottom", // Waybar at top layer
+    "position": "bottom", // Waybar position (top|bottom|left|right)
+    "height": 50, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    //"spacing": 4, // Gaps between modules (4px)
+    // Choose the order of the modules
+    //"modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad", "custom/media"],
+    //"modules-center": ["sway/window"],
+    //"modules-right": ["mpd", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "battery", "battery#bat2", "clock", "tray"],
+    //"modules-right": ["mpd", "temperature", "cpu", "memory","network", "pulseaudio", "backlight", "battery", "battery#bat2", "tray", "clock"],
+    "modules-center": ["custom/launcher", "tray", "wlr/taskbar", "custom/notification"],
+    // Modules configuration.
+    // "sway/workspaces": {
+    //     "disable-scroll": true,
+    //     "all-outputs": true,
+    //     "warp-on-scroll": false,
+    //     "format": "{name}: {icon}",
+    //     "format-icons": {
+    //         "1": "",
+    //         "2": "",
+    //         "3": "",
+    //         "4": "",
+    //         "5": "",
+    //         "urgent": "",
+    //         "focused": "",
+    //         "default": ""
+    //     }
+    // },
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+    },
+    "clock": {
+        // "timezone": "America/New_York",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%Y-%m-%d}"
+    },
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{icon}",
+          "format-icons": {
+            "notification": "<span foreground='red'><sup></sup></span>",
+            "none": "",
+            "dnd-notification": "<span foreground='red'><sup></sup></span>",
+            "dnd-none": ""
+          },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+     },
+     "custom/launcher": {
+	"format": "",
+	 //"format-icons": {"none": ""},
+ 	//"exec": "fuzzel",
+	"on-click": "fuzzel -w 50 -D no -b 00000085",
+	"escape": true
+     }
+}
